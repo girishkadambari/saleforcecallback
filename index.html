@@ -11,6 +11,7 @@
         console.log(currentUrl);
         console.log(window);
         window.postMessage({ eventName: "oauthCallback", url: currentUrl }, "*");
+         window.opener.postMessage({ eventName: "oauthCallback", url: currentUrl }, "*");
     </script>
 </body>
 </html>
