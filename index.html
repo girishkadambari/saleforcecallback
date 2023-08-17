@@ -8,8 +8,16 @@
     <script>
         // Get the current URL
         const currentUrl = window.location.href;
-        console.log(currentUrl);
-        window.postMessage({ eventName: "oauthCallback", url: currentUrl }, "*");
+
+        // Check if the message has already been posted
+        const messagePosted = localStorage.getItem("messagePosted");
+
+        if (!messagePosted) {
+            // Post the message and set the flag
+            window.postMessage({ eventName: "oauthCallback", url: currentUrl }, "*");
+            localStorage.setItem("messagePosted", "true");
+        }
+
         window.close();
     </script>
 </body>
