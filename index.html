@@ -10,8 +10,6 @@
         const currentUrl = window.location.href;
         console.log(currentUrl);
         window.postMessage({ eventName: "oauthCallback", url: currentUrl }, "*");
-        // Post a message to the parent window with the URL and event name
-        window.opener.postMessage({ eventName: "oauthCallback", url: currentUrl }, "*");
         window.close();
     </script>
 </body>
