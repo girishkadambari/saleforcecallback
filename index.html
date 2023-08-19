@@ -25,12 +25,14 @@
     </style>
     <script>
       let data = {
-          isAuthCallback: true,
-          queryString: window.location.search || '',
-          hash: window.location.hash || ''
+        isAuthCallback: true,
+        queryString: window.location.search || '',
+        hash: window.location.hash || ''
       };
-
-      window.opener.postMessage(data, '*');
+    
+      // Dispatch a custom event to the parent window
+      const event = new CustomEvent('salesforceAuthComplete', { detail: data });
+      window.opener.dispatchEvent(event);
     </script>
   </head>
   <body>
